@@ -16,14 +16,13 @@ export const sendMail = async (
   subject: string,
   text: string,
 ) => {
-  
 
   await transporter.sendMail({
     to: process.env.MAIL_FROM,
     from,
     subject,
     text,
-    html:`<span>email recebido de ${from} <br> <br> ${text}</span>`,
+    html:`<span>email recebido de ${from} <br> <br> ${text.replace(/\n/g, "<br>")}</span>`,
   });
 
   return true;
