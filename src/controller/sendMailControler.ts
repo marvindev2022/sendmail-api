@@ -12,6 +12,7 @@ export default async function sendMailController(req: any, res: any) {
     const mainSend = await sendMail(email, title, message);
     if (mainSend) {
       res.send("Email enviado com sucesso");
+      
     } else {
       res.send("Erro ao enviar email");
     }

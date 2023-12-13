@@ -12,18 +12,18 @@ export const transporter = nodemailer.createTransport({
 });
 
 export const sendMail = async (
-  to: string,
+  from: string,
   subject: string,
   text: string,
 ) => {
   
 
   await transporter.sendMail({
-    from: process.env.MAIL_FROM,
-    to,
+    to: process.env.MAIL_FROM,
+    from,
     subject,
     text,
-    html:text,
+    html:`<span>email recebido de ${from} <br> <br> ${text}</span>`,
   });
 
   return true;
