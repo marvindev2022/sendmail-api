@@ -1,21 +1,18 @@
 import { sendMail } from "../mail/nodemiler";
-import { mailSchema } from "../schema/mail.schema";
+import validateSchema from "../schema/mail.schema";
 
 export default async function sendMailController(req: any, res: any) {
   const { email, title, message } = req.body;
+  const { isValid, messages } = validateSchema(email, title, message);
   try {
-    mailSchema.validateAsync(
-      { email, title, message },
-      { abortEarly: false }
-    );
-
+    if (!isValid)
+      return res
+        .status(400)
+        .json({messages});
     const mainSend = await sendMail(email, title, message);
-    if (mainSend) {
-      res.send("Email enviado com sucesso");
-      
-    } else {
-      res.send("Erro ao enviar email");
-    }
+    if (mainSend) return res.status(200).json("Email enviado com sucesso");
+
+    return res.status(400).json("Erro ao enviar email");
   } catch (err: any) {
     return res.status(400).json({ error: err.message });
   }
