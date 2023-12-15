@@ -1,8 +1,12 @@
 import { mailSchema } from "../../schema/mail.schema";
-
-describe("Validação do esquema de e-mail", () => {
+interface EmailData {
+  title: string;
+  email: string;
+  message: string;
+}
+describe("Validação do esquema de e-mail", (): void => {
   test("Deve passar na validação com dados válidos", () => {
-    const dadosValidos = {
+    const dadosValidos: EmailData = {
       title: "Título do E-mail",
       email: "joao@example.com",
       message: "Conteúdo da mensagem...",
@@ -14,7 +18,7 @@ describe("Validação do esquema de e-mail", () => {
   });
 
   test("Deve falhar na validação com título inválido", () => {
-    const dadosInvalidos = {
+    const dadosInvalidos: EmailData = {
       title: "Títu",
       email: "joao@example.com",
       message: "Conteúdo da mensagem...",
@@ -26,7 +30,7 @@ describe("Validação do esquema de e-mail", () => {
   });
 
   test("Deve falhar na validação com e-mail inválido", () => {
-    const dadosInvalidos = {
+    const dadosInvalidos: EmailData = {
       title: "Título do E-mail",
       email: "joao@example",
       message: "Conteúdo da mensagem...",
@@ -38,7 +42,7 @@ describe("Validação do esquema de e-mail", () => {
   });
 
   test("Deve falhar na validação com mensagem inválida", () => {
-    const dadosInvalidos = {
+    const dadosInvalidos: EmailData = {
       title: "Título do E-mail",
       email: "joao@example.com",
       message: "Conteúdo",
