@@ -1,12 +1,12 @@
-import express from 'express';
-import sendMailController from './controller/sendMailControler';
+import express from "express";
+import sendMailController from "./controller/mailsend/sendMailControler";
 
-const router = express()
+const router = express();
 
-router.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+router.get("/", (req: express.Request, res: express.Response) => {
+  res.send("Hello World!");
+});
 
-router.post('/sendmail',sendMailController)
+router.post("/sendmail", sendMailController);
 
-export default router
+export default router;
