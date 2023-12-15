@@ -11,18 +11,16 @@ export const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendMail = async (
-  from: string,
-  subject: string,
-  text: string,
-) => {
-
+export const sendMail = async (from: string, subject: string, text: string) => {
   await transporter.sendMail({
     to: process.env.MAIL_FROM,
     from,
     subject,
     text,
-    html:`<span>email recebido de ${from} <br> <br> ${text.replace(/\n/g, "<br>")}</span>`,
+    html: `<span>email recebido de ${from} <br> <br> ${text.replace(
+      /\n/g,
+      "<br>"
+    )}</span>`,
   });
 
   return true;

@@ -15,7 +15,7 @@ describe("Validação do esquema de e-mail", () => {
 
   test("Deve falhar na validação com título inválido", () => {
     const dadosInvalidos = {
-      title: "Tít",
+      title: "Títu",
       email: "joao@example.com",
       message: "Conteúdo da mensagem...",
     };

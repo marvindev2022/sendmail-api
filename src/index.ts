@@ -8,5 +8,4 @@ dotenv.config();
 const app = express();
 
 app.use(cors(),express.json(),router);
-
 app.listen(3000, listen)

@@ -14,5 +14,4 @@ const mailSchema = Joi.object({
     "any.required": "O campo mensagem é obrigatório",
   }),
 });
-
 export { mailSchema };
